@@ -1,0 +1,20 @@
+// 배열에 존재하지 않는 가장 작은 양의 정수
+// 1. 배열에 존재하는 가장 작은 양의 정수를 찾는다.
+// 2. 양의 정수에 1씩 더하여 배열에 있는지 확인한다.
+// 3. 해당배열에 양의정수가 존재하지 않으면 해당 값을 반환한다.
+
+function solution(array) {
+    let answers = [];
+    let minNum = ''; // 배열에 존재하는 양의 정수 최솟값
+    array = array.filter(v => v > 0);
+    minNum = Math.min(...array);
+    for( i=minNum; i<array.length; i++ ){
+        if(!array.includes(i)){
+            answers.push(i);
+        }
+    }
+    console.log(answers[0]);
+    return answers[0];
+}
+
+solution([1000, 1, -300, 9, 0, -10, -1, 2, 4, 10000, -12345]);
