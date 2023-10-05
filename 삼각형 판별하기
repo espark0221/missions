@@ -7,7 +7,6 @@
         <script>
             function solution(a, b, c){
                 let answer="YES", max;
-                //긴 변의 길이는 다른 두 변 길이의 합보다 작아야 
                 if ([a,b,c].sort()[2] > [a,b,c].sort()[0] + [a,b,c].sort()[1]) {
                     answer = "NO"
                 }
