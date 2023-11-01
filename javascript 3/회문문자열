@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer="YES";
+                let reverseStr = "";
+                reverseStr = str.split("").reverse().join("").toUpperCase();
+                if (str.toUpperCase() !== reverseStr){
+                    answer = "No"
+                }
+                return answer;
+            }
+            
+            let str="gooG";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
