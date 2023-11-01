@@ -10,7 +10,7 @@
                 let english = /[a-zA-Z]+/g;
                 let cleanedString = "";
                 let reverseString = ""; 
-                cleanedString = s.match(english).join(' ').toUpperCase();
+                cleanedString = s.match(english).join("").toUpperCase();
                 reverseString = cleanedString.split("").reverse().join("").toUpperCase();
                 if (cleanedString !== reverseString){
                     answer = "NO"
