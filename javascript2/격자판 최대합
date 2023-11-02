@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let n = arr.length;
+                let answer = Number.MIN_SAFE_INTEGER;
+                let sumArr1=[];
+                let sumArr2=[];
+                let sum1=sum2=sum3=sum4=0;
+                for(let index1 in arr){
+                    for(let index2 in arr){
+                        // 가로
+                        sum1+=(parseInt(arr[index1][index2]))
+                        // 세로
+                        sum2+=(parseInt(arr[index2][index1]))
+                    }
+                    sumArr1.push(sum1);
+                    sum1=0;
+                    sumArr2.push(sum2);
+                    sum2=0;   
+                    // 좌측대각선 
+                    sum3+=(parseInt(arr[index1][index1]))
+                    // 우측대각선
+                    sum4+=(parseInt(arr[index1][arr.length-1-index1]))
+                }
+                sumArr1.push(...sumArr2, sum3, sum4);
+                return Math.max(...sumArr1);
+            }
+            let arr = [[10,13,10,12,15],[12,39,30,23,11],[11,25,50,53,15],[19,27,29,37,27],[19,13,30,13,19]];
+            console.log(solution(arr))
+        </script>
+    </body>
+</html>
