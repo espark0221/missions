@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let n = arr.length;
+                let answer = 0
+                let map = [];
+                let zero =  Array.from({length:n+2}, ()=>0);;
+                // 봉우리 지도
+                map.push(zero)
+                for(let index1 in arr){
+                    map.push([0])
+                    for(let index2 in arr){
+                    map[parseInt(index1)+1].push(arr[index1][index2])
+                    }  
+                    map[parseInt(index1)+1].push(0)
+                }                
+                map.push(zero)
+                // 봉우리 개수
+                for(let index3  in map){
+                    for(let index4 in map){
+                        const item = map[index3][index4]
+                        const up =  beforeIndex(index3) ? map[beforeIndex(index3)][index4] : null
+                        const down = afterIndex(index3)<n ? map[afterIndex(index3)][index4] : null
+                        const leftSide = beforeIndex(index4) ? map[index3][beforeIndex(index4)] : null
+                        const rightSide = afterIndex(index4)<n ? map[index3][afterIndex(index4)] : null
+                        if(item > up && item > down && item > leftSide && item > rightSide) answer++;
+                        
+                    }
+                }                
+                return answer;
+            }
+            // 이전 인덱스
+            function beforeIndex(index){
+                if(parseInt(index)-1 && parseInt(index)-1 > 0){
+                    return parseInt(index)-1
+                }
+                return null
+            }
+            // 이후 인덱스
+            function afterIndex(index){
+                return parseInt(index)+1
+            }
+            let arr = [[5,3,7,2,3],[3,7,1,6,1],[7,2,5,3,4],[4,3,6,4,1],[8,7,3,5,2]];
+            console.log(solution(arr))
+        </script>
+    </body>
+</html>
