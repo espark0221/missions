@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer="";
+                let nextSpelling = "";
+                let cnt=1;
+                for(let index in str){
+                    spelling = str[index]
+                    nextSpelling = str[(Number(index)+1)]
+                    if (spelling === nextSpelling){
+                        cnt ++;
+                    }
+                    if (spelling !== nextSpelling){
+                    if(cnt)cnt ++;
+                    answer += spelling
+                    if (cnt > 1)answer += Number(cnt)
+                    cnt = 0;
+                    }
+                }
+                return answer;
+            }
+            
+            let str="KKHSSSSSSSE";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
