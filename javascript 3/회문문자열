@@ -8,8 +8,8 @@
             function solution(s){
                 let answer="YES";
                 let reverseStr = "";
-                reverseStr = str.split("").reverse().join("").toUpperCase();
-                if (str.toUpperCase() !== reverseStr){
+                reverseStr = str.split("").reverse().join("").toUpperCase(); // 대문자거꾸로
+                if (str.toUpperCase() !== reverseStr){ // 기존대문자문자열과 거꾸로대문자문자열 비교
                     answer = "No"
                 }
                 return answer;
