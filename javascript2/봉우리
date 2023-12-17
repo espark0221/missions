@@ -5,43 +5,45 @@
     </head>
     <body>
         <script>
-            function solution(arr){
+            function solution(arr) {
                 let n = arr.length;
                 let answer = 0
                 let map = [];
-                let zero =  Array.from({length:n+2}, ()=>0);;
-                // 봉우리 지도
-                map.push(zero)
-                for(let index1 in arr){
-                    map.push([0])
-                    for(let index2 in arr){
-                    map[parseInt(index1)+1].push(arr[index1][index2])
+                let zero =  Array.from({length:n+2}, ()=>0) // 배열길이 +2만큼 0을 담아 배열로 반환
+
+                // 봉우리 지도 
+                map.push(zero) // 첫째줄 0
+                for (let i=0; i<arr.length; i++){
+                    map.push([0]) // 현재줄 첫번째값 0 추가
+                    for (let j=0; j<arr.length; j++){
+                        map[i+1].push(arr[i][j])
                     }  
-                    map[parseInt(index1)+1].push(0)
-                }                
-                map.push(zero)
+                    map[i+1].push(0) // 현재줄 마지막값 0 추가                   
+                }              
+                map.push(zero) // 마지막줄 0
+
                 // 봉우리 개수
-                for(let index3  in map){
-                    for(let index4 in map){
-                        const item = map[index3][index4]
-                        const up =  beforeIndex(index3) ? map[beforeIndex(index3)][index4] : null
-                        const down = afterIndex(index3)<n ? map[afterIndex(index3)][index4] : null
-                        const leftSide = beforeIndex(index4) ? map[index3][beforeIndex(index4)] : null
-                        const rightSide = afterIndex(index4)<n ? map[index3][afterIndex(index4)] : null
-                        if(item > up && item > down && item > leftSide && item > rightSide) answer++;
-                        
+                for (let x=0; x<map.length; x++){
+                    for(let y=0; y<map.length; y++){
+                        const item = map[x][y]
+                        const up =  beforeIndex(x) ? map[beforeIndex(x)][y] : null // 상
+                        const down = afterIndex(x)<n ? map[afterIndex(x)][y] : null // 하
+                        const leftSide = beforeIndex(y) ? map[x][beforeIndex(y)] : null // 좌
+                        const rightSide = afterIndex(y)<n ? map[x][afterIndex(y)] : null // 우
+                        if(item > up && item > down && item > leftSide && item > rightSide) answer++; // 모두큰경우에만 answer 증가
+                    
                     }
-                }                
+                }         
                 return answer;
             }
-            // 이전 인덱스
+            // 이전 인덱스 존재여부를 판단
             function beforeIndex(index){
                 if(parseInt(index)-1 && parseInt(index)-1 > 0){
                     return parseInt(index)-1
                 }
                 return null
             }
-            // 이후 인덱스
+            // 이후 인덱스 존재여부를 판단
             function afterIndex(index){
                 return parseInt(index)+1
             }
