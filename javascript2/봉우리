@@ -36,16 +36,14 @@
                 }         
                 return answer;
             }
-            // 이전 인덱스 존재여부를 판단
+            // 이전 인덱스
             function beforeIndex(index){
-                if(parseInt(index)-1 && parseInt(index)-1 > 0){
-                    return parseInt(index)-1
-                }
+                if (index-1 && index-1>0) return index-1 // 이전인덱스가 map에 존재하는 경우에만 반환
                 return null
             }
-            // 이후 인덱스 존재여부를 판단
+            // 이후 인덱스
             function afterIndex(index){
-                return parseInt(index)+1
+                return index+1
             }
             let arr = [[5,3,7,2,3],[3,7,1,6,1],[7,2,5,3,4],[4,3,6,4,1],[8,7,3,5,2]];
             console.log(solution(arr))
